@@ -1,0 +1,121 @@
+{
+	"name": "count_recods",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "13000 Sales Records.csv",
+				"fileSystem": "landing"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Product type",
+				"type": "String"
+			},
+			{
+				"name": "SKU",
+				"type": "String"
+			},
+			{
+				"name": "Price",
+				"type": "String"
+			},
+			{
+				"name": "Availability",
+				"type": "String"
+			},
+			{
+				"name": "Number of products sold",
+				"type": "String"
+			},
+			{
+				"name": "Revenue generated",
+				"type": "String"
+			},
+			{
+				"name": "Customer demographics",
+				"type": "String"
+			},
+			{
+				"name": "Stock levels",
+				"type": "String"
+			},
+			{
+				"name": "Lead times",
+				"type": "String"
+			},
+			{
+				"name": "Order quantities",
+				"type": "String"
+			},
+			{
+				"name": "Shipping times",
+				"type": "String"
+			},
+			{
+				"name": "Shipping carriers",
+				"type": "String"
+			},
+			{
+				"name": "Shipping costs",
+				"type": "String"
+			},
+			{
+				"name": "Supplier name",
+				"type": "String"
+			},
+			{
+				"name": "Location",
+				"type": "String"
+			},
+			{
+				"name": "Lead time",
+				"type": "String"
+			},
+			{
+				"name": "Production volumes",
+				"type": "String"
+			},
+			{
+				"name": "Manufacturing lead time",
+				"type": "String"
+			},
+			{
+				"name": "Manufacturing costs",
+				"type": "String"
+			},
+			{
+				"name": "Inspection results",
+				"type": "String"
+			},
+			{
+				"name": "Defect rates",
+				"type": "String"
+			},
+			{
+				"name": "Transportation modes",
+				"type": "String"
+			},
+			{
+				"name": "Routes",
+				"type": "String"
+			},
+			{
+				"name": "Costs",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

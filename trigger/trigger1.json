@@ -1,0 +1,17 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/4b7c33b7-6409-4b66-8d2b-c16d87ae2c4e/resourceGroups/TDS_GROUP/providers/Microsoft.Storage/storageAccounts/tdsgroups",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

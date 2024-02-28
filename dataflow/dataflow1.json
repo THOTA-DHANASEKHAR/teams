@@ -1,0 +1,123 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SalesLTSalesOrderHeader",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "SalesLTSalesOrderDetail",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "source_check_until_fileis_uploaded",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join2"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "sort1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          SalesOrderID as integer,",
+				"          RevisionNumber as short,",
+				"          OrderDate as string,",
+				"          DueDate as string,",
+				"          ShipDate as string,",
+				"          Status as short,",
+				"          OnlineOrderFlag as boolean,",
+				"          SalesOrderNumber as string,",
+				"          PurchaseOrderNumber as string,",
+				"          AccountNumber as string,",
+				"          CustomerID as short,",
+				"          ShipToAddressID as short,",
+				"          BillToAddressID as short,",
+				"          ShipMethod as string,",
+				"          CreditCardApprovalCode as string,",
+				"          SubTotal as double,",
+				"          TaxAmt as double,",
+				"          Freight as double,",
+				"          TotalDue as double,",
+				"          Comment as string,",
+				"          rowguid as string,",
+				"          ModifiedDate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          SalesOrderID as integer,",
+				"          SalesOrderDetailID as integer,",
+				"          OrderQty as short,",
+				"          ProductID as short,",
+				"          UnitPrice as double,",
+				"          UnitPriceDiscount as double,",
+				"          LineTotal as double,",
+				"          rowguid as string,",
+				"          ModifiedDate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source1, source2 join(source1@SalesOrderID == source2@SalesOrderID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join2",
+				"join2 derive(totalcost = multiply(OrderQty,UnitPrice)) ~> derivedColumn1",
+				"select1 sort(asc(ProductID, true)) ~> sort1",
+				"derivedColumn1 select(mapColumn(",
+				"          OrderDate,",
+				"          SalesOrderNumber,",
+				"          PurchaseOrderNumber,",
+				"          CustomerID,",
+				"          SubTotal,",
+				"          TaxAmt,",
+				"          TotalDue,",
+				"          Comment,",
+				"          SalesOrderDetailID,",
+				"          OrderQty,",
+				"          ProductID,",
+				"          UnitPrice,",
+				"          LineTotal,",
+				"          UnitPriceDiscount,",
+				"          totalcost",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

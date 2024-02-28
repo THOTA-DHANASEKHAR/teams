@@ -1,0 +1,9 @@
+{
+	"name": "THOTAGROUPS",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "630cb104-5a6f-4e0f-8c4a-3f63e0e85dff",
+		"tenantId": "2dc67ee3-3164-4bdc-b34d-979a4950672b"
+	}
+}

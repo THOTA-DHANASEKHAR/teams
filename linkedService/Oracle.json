@@ -1,0 +1,15 @@
+{
+	"name": "Oracle",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=rahkeS-anahD-atohT;port=1522;servicename=XE;user id=HR"
+		},
+		"connectVia": {
+			"referenceName": "SIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

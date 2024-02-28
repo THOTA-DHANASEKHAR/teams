@@ -1,0 +1,7 @@
+{
+	"name": "SIR",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "local-oracle"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "scdt1_sink_OracleTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Oracle",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SCDT-1"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "HR",
+			"table": "A_TBL"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
