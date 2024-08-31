@@ -1,0 +1,9 @@
+{
+	"name": "Thota01",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fb63310a-1a39-423b-a7fe-0e934c39f1f1",
+		"tenantId": "724a5dbe-79d3-4f27-90d5-157ce61dd79d"
+	}
+}
